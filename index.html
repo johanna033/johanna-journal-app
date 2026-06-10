@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Johanna Journal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#F7F2E8" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="phone-frame">
+    <section class="screen active" id="home-screen">
+      <div class="soft-orb orb-one"></div>
+      <div class="soft-orb orb-two"></div>
+      <div class="centered welcome-block">
+        <p class="eyebrow">private journal</p>
+        <h1>Welcome back,<br>Johanna</h1>
+        <p class="faded-date" id="today-label"></p>
+        <button class="arrow-button" data-go="emoji-screen" aria-label="track your day">
+          <span>track your day</span>
+          <strong>↓</strong>
+        </button>
+        <button class="home-calendar-button" data-go="calendar-screen" aria-label="calendar overview">calendar overview</button>
+      </div>
+    </section>
+
+    <section class="screen" id="emoji-screen">
+      <button class="ghost-button" data-go="home-screen">← back</button>
+      <div class="content-card">
+        <p class="eyebrow">step 01</p>
+        <h2>beschreibe deinen tag<br>in 3 emojis</h2>
+        <textarea id="emoji-input" class="emoji-input" maxlength="12" placeholder="🌙 ☕️ ✨"></textarea>
+        <p class="hint">Tipp: genau 3 Emojis fühlen sich hier am schönsten an.</p>
+      </div>
+      <button class="floating-next" data-go="text-screen" aria-label="weiter">↓</button>
+    </section>
+
+    <section class="screen" id="text-screen">
+      <button class="ghost-button" data-go="emoji-screen">← back</button>
+      <div class="content-card text-card">
+        <p class="eyebrow">step 02</p>
+        <h2>descibe what u<br>where up to</h2>
+        <textarea id="day-text" class="day-text" placeholder="Heute war..."></textarea>
+
+        <label class="photo-upload">
+          <input id="photo-input" type="file" accept="image/*" multiple />
+          <span>＋ fotos einfügen</span>
+        </label>
+        <div class="photo-preview" id="photo-preview"></div>
+        <button class="save-card-button" id="save-entry" aria-label="speichern und weiter">save & continue ↓</button>
+      </div>
+    </section>
+
+    <section class="screen" id="calendar-screen">
+      <div class="calendar-topbar">
+        <button class="ghost-button" data-go="home-screen">home</button>
+        <button class="gold-button" id="new-entry">new day</button>
+      </div>
+      <div class="calendar-header">
+        <p class="eyebrow">your days</p>
+        <h2 id="month-label"></h2>
+      </div>
+      <div class="calendar-grid" id="calendar-grid"></div>
+      <article class="entry-detail hidden" id="entry-detail">
+        <button id="close-detail" class="close-button">×</button>
+        <p class="detail-date" id="detail-date"></p>
+        <h3 id="detail-emojis"></h3>
+        <p id="detail-text"></p>
+        <div id="detail-photos" class="detail-photos"></div>
+      </article>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
